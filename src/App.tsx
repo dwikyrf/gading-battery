@@ -190,7 +190,7 @@ const services: Service[] = [
     name: 'Cas Aki (Charging)',
     description:
       'Jasa cas aki dengan alat khusus untuk mengembalikan daya aki yang lemah atau drop.',
-    duration: '± 10 – 30 menit'
+    duration: '± 6 jam – 1 hari'
   },
   {
     id: 2,

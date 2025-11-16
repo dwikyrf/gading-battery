@@ -3,6 +3,9 @@
     sans-serif;
   color: #0f172a;
   background-color: #0b1120;
+
+  /* [PERBAIKAN] Menambahkan line-height global untuk kenyamanan membaca */
+  line-height: 1.6;
 }
 
 *,
@@ -14,11 +17,21 @@
 body {
   margin: 0;
   background: #020617;
+  /* [PERBAIKAN] Menambahkan anti-aliasing untuk font yang lebih halus */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* [PERBAIKAN] Menambahkan scroll-behavior yang mulus untuk anchor links */
+html {
+  scroll-behavior: smooth;
 }
 
 .app {
   min-height: 100vh;
   color: #0f172a;
+  /* [PERBAIKAN] Transisi untuk pergantian tema dark/light yang mulus */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -35,6 +48,8 @@ body {
   backdrop-filter: blur(12px);
   background: rgba(15, 23, 42, 0.8);
   border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  /* [PERBAIKAN] Transisi untuk navbar saat berganti tema */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar-inner {
@@ -76,17 +91,22 @@ body {
   cursor: pointer;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  transition: background 0.15s, color 0.15s;
+  /* [PERBAIKAN] Transisi lebih lambat dan halus, ditambah transform */
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-links button:hover {
   background: rgba(148, 163, 184, 0.2);
+  /* [PERBAIKAN] Efek hover yang sedikit membesar */
+  transform: scale(1.05);
 }
 
 .hero {
   background: radial-gradient(circle at top left, #1e293b, #020617);
   color: #e5e7eb;
   padding: 4rem 0 3rem;
+  /* [PERBAIKAN] Menambahkan overflow hidden untuk animasi */
+  overflow: hidden;
 }
 
 .hero-inner {
@@ -96,10 +116,26 @@ body {
   align-items: center;
 }
 
+/* [PERBAIKAN] Keyframes untuk animasi fade-in-up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-text h1 {
   font-size: 2.5rem;
   line-height: 1.1;
   margin-bottom: 1rem;
+  /* [PERBAIKAN] Menambahkan text-shadow agar lebih "pop" */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  /* [PERBAIKAN] Menambahkan animasi */
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-text .accent {
@@ -109,6 +145,9 @@ body {
 .hero-text p {
   max-width: 32rem;
   color: #cbd5f5;
+  /* [PERBAIKAN] Menambahkan animasi dengan delay */
+  animation: fadeInUp 0.8s ease-out 0.2s;
+  animation-fill-mode: backwards; /* Agar tetap di state awal sebelum animasi */
 }
 
 .hero-actions {
@@ -116,6 +155,9 @@ body {
   gap: 0.75rem;
   margin: 1.5rem 0 1rem;
   flex-wrap: wrap;
+  /* [PERBAIKAN] Menambahkan animasi dengan delay */
+  animation: fadeInUp 0.8s ease-out 0.4s;
+  animation-fill-mode: backwards;
 }
 
 .btn-primary,
@@ -127,16 +169,23 @@ body {
   cursor: pointer;
   border: 1px solid transparent;
   text-decoration: none;
+  /* [PERBAIKAN] Transisi yang lebih halus untuk tombol */
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
   background: #fbbf24;
   color: #1f2933;
   border-color: #fbbf24;
+  /* [PERBAIKAN] Shadow untuk tombol agar lebih menonjol */
+  box-shadow: 0 4px 15px -5px rgba(251, 191, 36, 0.4);
 }
 
 .btn-primary:hover {
-  filter: brightness(0.95);
+  filter: brightness(1.05); /* Sedikit lebih cerah */
+  /* [PERBAIKAN] Efek "lift" dan shadow yang lebih kuat saat hover */
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px -4px rgba(251, 191, 36, 0.5);
 }
 
 .btn-outline {
@@ -147,6 +196,8 @@ body {
 
 .btn-outline:hover {
   background: rgba(148, 163, 184, 0.2);
+  /* [PERBAIKAN] Efek "lift" saat hover */
+  transform: translateY(-3px);
 }
 
 .hero-badges {
@@ -170,6 +221,9 @@ body {
   padding: 1.5rem;
   border: 1px solid rgba(148, 163, 184, 0.4);
   box-shadow: 0 24px 50px rgba(15, 23, 42, 0.8);
+  /* [PERBAIKAN] Menambahkan animasi */
+  animation: fadeInUp 0.8s ease-out 0.3s;
+  animation-fill-mode: backwards;
 }
 
 .hero-card h2 {
@@ -215,6 +269,9 @@ body {
 .section-header p {
   margin-top: 0.5rem;
   color: #94a3b8;
+  max-width: 600px; /* [PERBAIKAN] Batasi lebar agar lebih mudah dibaca */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .filter-row {
@@ -235,12 +292,21 @@ body {
   font-size: 0.8rem;
   color: #e5e7eb;
   cursor: pointer;
+  /* [PERBAIKAN] Transisi yang halus untuk chip */
+  transition: all 0.3s ease;
+}
+
+.chip:hover {
+  /* [PERBAIKAN] Efek hover untuk chip yang tidak aktif */
+  border-color: #fbbf24;
+  color: #fbbf24;
 }
 
 .chip-active {
   background: #fbbf24;
   border-color: #fbbf24;
   color: #111827;
+  font-weight: 600; /* [PERBAIKAN] Tambahkan font-weight */
 }
 
 .grid {
@@ -254,6 +320,14 @@ body {
   border-radius: 1rem;
   padding: 1.25rem;
   border: 1px solid rgba(148, 163, 184, 0.4);
+  /* [PERBAIKAN] Transisi untuk efek hover "lift" */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* [PERBAIKAN] Efek "lift" dan shadow saat card di-hover */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.9);
 }
 
 .card h3 {
@@ -305,6 +379,14 @@ body {
   border-radius: 0.9rem;
   padding: 0.9rem 1rem;
   border: 1px solid rgba(148, 163, 184, 0.4);
+  /* [PERBAIKAN] Transisi untuk stat */
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* [PERBAIKAN] Efek hover untuk stat */
+.stat:hover {
+  transform: scale(1.03);
+  border-color: rgba(251, 191, 36, 0.5);
 }
 
 .stat-number {
@@ -334,10 +416,13 @@ body {
 .contact-info a {
   color: #fbbf24;
   text-decoration: none;
+  font-weight: 600; /* [PERBAIKAN] Pertegas link */
+  transition: all 0.2s ease;
 }
 
 .contact-info a:hover {
-  text-decoration: underline;
+  text-decoration: none; /* [PERBAIKAN] Hilangkan underline, ganti dengan brightness */
+  filter: brightness(1.2);
 }
 
 .contact-card {
@@ -372,13 +457,15 @@ body {
   font-size: 0.9rem;
   background: rgba(15, 23, 42, 0.8);
   color: #e5e7eb;
+  /* [PERBAIKAN] Transisi untuk form */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: #fbbf24;
-  box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.4);
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.4); /* [PERBAIKAN] Shadow lebih jelas */
 }
 
 .full-width {
@@ -402,6 +489,7 @@ body {
   color: #64748b;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .hero-inner,
   .about-layout,
@@ -417,6 +505,7 @@ body {
     display: none;
   }
 }
+
 /* ==== SLIDER PRODUK ==== */
 
 .slider {
@@ -436,6 +525,13 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: transform 0.3s ease;
+  /* [PERBAIKAN] Tambahkan baris ini untuk warna di dark mode */
+  color: #cbd5f5; /* Ini adalah warna abu-abu muda */
+}
+
+.card-product:hover {
+  transform: scale(1.05); /* [PERBAIKAN] Efek hover */
 }
 
 .product-logo-wrapper {
@@ -470,6 +566,13 @@ body {
   padding: 0.2rem 0.6rem;
   cursor: pointer;
   color: inherit;
+  /* [PERBAIKAN] Transisi */
+  transition: all 0.3s ease;
+}
+
+.slider-btn:not(:disabled):hover {
+  background: rgba(148, 163, 184, 0.2);
+  transform: scale(1.1);
 }
 
 .slider-btn:disabled {
@@ -493,20 +596,33 @@ body {
   font-size: 0.8rem;
   padding: 0.3rem 0.7rem;
   cursor: pointer;
+  /* [PERBAIKAN] Transisi */
+  transition: all 0.3s ease;
 }
 
 .theme-toggle:hover {
   background: rgba(148, 163, 184, 0.2);
+  transform: scale(1.05); /* [PERBAIKAN] Efek hover */
 }
 
+/* ==== DARK / LIGHT MODE OVERRIDES ==== */
 
 .app.dark {
+  /* pakai styling default di atas */
 }
 
 .app.light {
   color: #0f172a;
 }
 
+/* Global text color untuk light mode supaya semua teks lebih terbaca */
+.app.light p,
+.app.light span,
+.app.light li {
+  color: #374151;
+}
+
+/* NAVBAR */
 .app.light .navbar {
   background: rgba(255, 255, 255, 0.9);
   border-bottom-color: #e5e7eb;
@@ -528,6 +644,7 @@ body {
   background: #e5e7eb;
 }
 
+/* TOGGLE */
 .app.light .theme-toggle {
   color: #111827;
   border-color: #cbd5f5;
@@ -537,9 +654,15 @@ body {
   background: #e5e7eb;
 }
 
+/* HERO */
 .app.light .hero {
-  background: radial-gradient(circle at top left, #e5e7eb, #ffffff);
+  background: radial-gradient(circle at top left, #eef2f6, #ffffff);
   color: #111827;
+}
+
+.app.light .hero-text h1 {
+  /* [PERBAIKAN] Shadow untuk light mode */
+  text-shadow: none;
 }
 
 .app.light .hero-text p {
@@ -552,12 +675,39 @@ body {
   box-shadow: 0 10px 30px rgba(148, 163, 184, 0.5);
 }
 
+.app.light .hero-card ul {
+  color: #4b5563; /* Warna list item */
+}
+
+.app.light .hero-card-bottom {
+  color: #374151; /* Warna teks bawah */
+  border-top-color: #e5e7eb; /* Warna border putus-putus */
+}
+
 .app.light .hero-badges span {
   background: #f3f4f6;
   border-color: #e5e7eb;
   color: #374151;
 }
 
+/* [PERBAIKAN] Hover untuk tombol di light mode */
+.app.light .btn-primary {
+  box-shadow: 0 4px 15px -5px rgba(217, 119, 6, 0.4);
+}
+.app.light .btn-primary:hover {
+  box-shadow: 0 7px 20px -4px rgba(217, 119, 6, 0.5);
+}
+
+.app.light .btn-outline {
+  color: #374151; /* Warna teks gelap */
+  border-color: #d1d5db; /* Border abu-abu muda */
+}
+
+.app.light .btn-outline:hover {
+  background: #f3f4f6; /* Latar hover abu-abu sangat muda */
+}
+
+/* SECTION */
 .app.light .section {
   background: #ffffff;
   color: #111827;
@@ -567,12 +717,34 @@ body {
   background: #f3f4f6;
 }
 
-.app.light .card {
-  background: #ffffff;
-  border-color: #e5e7eb;
+/* Header Section */
+.app.light .section-header p {
+  color: #6b7280; /* Warna subjudul */
 }
 
-.app.light .card-desc {
+/* CARD / STAT / CONTACT CARD */
+.app.light .card,
+.app.light .contact-card,
+.app.light .stat {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  /* [PERBAIKAN] Shadow standar untuk card di light mode */
+  box-shadow: 0 4px 12px -6px rgba(148, 163, 184, 0.3);
+}
+
+/* [PERBAIKAN] Efek hover card di light mode */
+.app.light .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px -8px rgba(148, 163, 184, 0.6);
+}
+
+.app.light .stat:hover {
+  border-color: #fbbf24;
+}
+
+.app.light .card-desc,
+.app.light .about-layout p,
+.app.light .contact-info p {
   color: #4b5563;
 }
 
@@ -580,6 +752,50 @@ body {
   color: #6b7280;
 }
 
+/* FILTER & SLIDER TEXT */
+.app.light .filter-row,
+.app.light .slider-controls {
+  color: #4b5563;
+}
+
+/* Filter Chip (yang tidak aktif) */
+.app.light .chip {
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.app.light .chip:hover {
+  color: #111827;
+  border-color: #111827;
+}
+
+.app.light .chip-active {
+  font-weight: 600;
+}
+
+/* Label pada Stat */
+.app.light .stat-label {
+  color: #4b5563;
+}
+
+/* FORM */
+.app.light .form-group label {
+  color: #374151;
+}
+
+.app.light .form-group input,
+.app.light .form-group textarea {
+  background: #ffffff;
+  color: #111827;
+  border-color: #d1d5db;
+}
+
+.app.light .form-group input::placeholder,
+.app.light .form-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* FOOTER */
 .app.light .footer {
   background: #f9fafb;
   border-top-color: #e5e7eb;
@@ -593,3 +809,7 @@ body {
   color: #9ca3af;
 }
 
+/* Teks untuk Kartu Produk di light mode */
+.app.light .card-product {
+  color: #374151; /* Ini adalah warna abu-abu gelap */
+}
